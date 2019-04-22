@@ -1,4 +1,4 @@
-default: init
+default: k8s-init
 
 test:
 	@echo "ENV variables ${CLUSTER_NAME}"
@@ -62,13 +62,15 @@ kops-delete-cluster:
 	kops delete cluster ${CLUSTER_NAME} \
 	--state ${KOPS_STATE_STORE} --yes
 
+kops-export:
+	kops export kubecfg --name ${CLUSTER_NAME} \
+	--state ${KOPS_STATE_STORE}
+
 k8s-init: cluster.yaml kops-s3-replace kops-create-secret kops-update
 
-k8s-deploy: kops-update-yes kops-rolling-update kops-rolling-update-yes
+k8s-upgrade: kops-update kops-update-yes kops-rolling-update kops-rolling-update-yes
 
-vpc-init:
-
-init:
+all: k8s-init kops-update-yes
 
 clean:
 	rm -rf .terraform

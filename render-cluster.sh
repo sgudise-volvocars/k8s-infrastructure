@@ -40,4 +40,5 @@ include ../Makefile.in
 EOF
 
 echo "cd ${CLUSTER_DIR}"
-echo "make all"
+echo "make k8s-init"
+echo "make kops-update-yes"

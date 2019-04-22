@@ -64,17 +64,3 @@ output "dns_zone" {
     // value = "${data.aws_route53_zone.selected.name}"
     value = "${var.dns_zone}"
 }
-## Code reference 
-// output "private_subnet_cidr_blocks" {
-//   value = ["${data.aws_subnet.private.*.cidr_block}"]
-// }
-
-// output "public_subnet_cidr_blocks" {
-//   value = ["${data.aws_subnet.public.*.cidr_block}"]
-// }
-// # private Hosted Zone associated with the vpc_id
-// data "aws_route53_zone" "selected" {
-//   vpc_id = "${data.aws_vpc.selected.id}"
-//   name = "${var.dns_zone}"
-//   private_zone = true
-// }
