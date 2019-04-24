@@ -1,4 +1,4 @@
-variable ami_name { default = "ami-0511f039a8ee0c3de" }
+variable ami_name { default = "ami-03408ba28f98042bd" }
 variable node_instance_type { default = "t2.medium" }
 variable master_instance_type { default = "t2.small" }
 variable cluster_name {}
@@ -6,8 +6,8 @@ variable lb_type { default = "Internal" }
 variable owner { default = "Samson Gudise" }
 variable team { default = "DevOps" }
 variable kops_state_store {}
-variable oidcClientID { default = "abcdefgh-12d4-1234-b58e-1234567890xyz" }
-variable oidcIssuerURL { default = "https://sts.windows.net/abcdefgh-12d4-1234-b58e-987654345xzc/" }
+variable oidcClientID { default = "f8a1cbda-71f6-4146-b58e-8351b420b39c" }
+variable oidcIssuerURL { default = "https://sts.windows.net/371cb917-b098-4303-b878-c182ec8403ac/" }
 variable oidcUsernameClaim { default = "upn" }
 variable version { default = "1.11.8" }
 variable apiaccess {

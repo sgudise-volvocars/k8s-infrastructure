@@ -13,7 +13,7 @@ NETWORK_CIDR=$4
 LB_TYPE=$5
 
 SREGION=`echo "${REGION//-/}"`
-DOMAIN_NAME="sarithm.com"
+DOMAIN_NAME="tekgs.io"
 CLUSTER_NAME=${NAME}.${SREGION}.${ENV}.${DOMAIN_NAME}
 
 CURRENT_DIR=$(dirname $0)

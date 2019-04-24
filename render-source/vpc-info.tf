@@ -4,7 +4,6 @@ variable dns_zone {}
 # Remove profile  after test
 provider aws {
     region = "${var.region}"
-    profile = "personal"  
 }
 # Retrieve vpc data for vpc_id 
 data "aws_vpc" "selected" {
@@ -15,7 +14,7 @@ data "aws_vpc" "selected" {
 data "aws_subnet_ids" "private" {
   vpc_id = "${data.aws_vpc.selected.id}"
   tags = {
-    Name = "*private*"
+    SubnetType = "Private"
   }
 }
 data "aws_subnet" "private" {
@@ -30,7 +29,7 @@ output "private_subnet_ids" {
 data "aws_subnet_ids" "public" {
   vpc_id = "${data.aws_vpc.selected.id}"
   tags = {
-    Name = "*public*"
+    SubnetType = "Utility"
   }
 }
 data "aws_subnet" "public" {
