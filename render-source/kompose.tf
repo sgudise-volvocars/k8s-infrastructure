@@ -1,4 +1,3 @@
-variable ami_name { default = "ami-03408ba28f98042bd" }
 variable node_instance_type { default = "t2.medium" }
 variable master_instance_type { default = "t2.small" }
 variable cluster_name {}
@@ -19,6 +18,27 @@ variable sshaccess {
     default = [ "0.0.0.0/0" ]
 }
 
+data "aws_ami" "centos_k8s" {
+    // executable_users = ["self"]
+    most_recent      = true
+    name_regex       = "^centos-*"
+    owners           = ["self"]
+
+  filter {
+    name = "name"
+    values = ["centos7-k8s*"]
+  }
+
+  filter {
+    name = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+}
 output "cluster_name" {
     value = "${var.cluster_name}"
 }
@@ -35,7 +55,7 @@ output "team" {
     value = "${var.team}"
 }
 output "ami_name" {
-    value = "${var.ami_name}"
+    value = "${data.aws_ami.centos_k8s.id}"
 }
 output "node_instance_type" {
     value = "${var.node_instance_type}"

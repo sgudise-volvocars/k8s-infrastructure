@@ -28,7 +28,7 @@ output "private_subnet_ids" {
 ##################################
 data "aws_subnet_ids" "public" {
   vpc_id = "${data.aws_vpc.selected.id}"
-  tags = {
+  tags  {
     SubnetType = "Utility"
   }
 }
