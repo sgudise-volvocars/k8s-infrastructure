@@ -1,0 +1,32 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubelet-api-admin
+subjects:
+- kind: User
+  name: kubelet-api
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: system:kubelet-api-admin
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cluster-admin-binding
+subjects:
+- kind: User
+  name: aad:kunpatil@teksystems.com
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: aad:sagudise@teksystems.com
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: aad:lthamaran@teksystems.com
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: ""

@@ -50,10 +50,12 @@ kops-update-yes:
         	--yes
 
 kops-rolling-update:
-	kops rolling-update cluster ${CLUSTER_NAME}
+	kops rolling-update cluster ${CLUSTER_NAME} \
+		--state ${KOPS_STATE_STORE}
 
 kops-rolling-update-yes:
-	kops rolling-update cluster ${CLUSTER_NAME} --yes
+	kops rolling-update cluster ${CLUSTER_NAME} \
+		--state ${KOPS_STATE_STORE} --yes
 
 kops-delete-cluster:
 	kops delete cluster ${CLUSTER_NAME} \
@@ -65,7 +67,7 @@ kops-export:
 
 k8s-init: cluster.yaml kops-s3-replace kops-create-secret kops-update
 
-k8s-upgrade: kops-update kops-update-yes kops-rolling-update kops-rolling-update-yes
+k8s-update: kops-s3-replace kops-update kops-update-yes kops-rolling-update kops-rolling-update-yes
 
 all: k8s-init kops-update-yes kops-export
 

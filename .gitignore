@@ -5,4 +5,5 @@
 **/target/
 **/.kube/
 **/.terraform/
-**/*uswest*/
+**/*.io/
+**/*.com/

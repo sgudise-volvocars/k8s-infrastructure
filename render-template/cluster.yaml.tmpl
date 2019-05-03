@@ -129,8 +129,8 @@ metadata:
 spec:
   image: {{ $.ami_name.value }}
   machineType: {{ $.node_instance_type.value }}
-  maxSize: 3
-  minSize: 1
+  maxSize: 9
+  minSize: 3
   nodeLabels:
     kops.k8s.io/instancegroup: nodes
   role: Node
