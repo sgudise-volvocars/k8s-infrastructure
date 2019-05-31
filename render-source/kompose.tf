@@ -5,8 +5,8 @@ variable lb_type { default = "Internal" }
 variable owner { default = "Samson Gudise" }
 variable team { default = "DevOps" }
 variable kops_state_store {}
-variable oidcClientID { default = "f8a1cbda-71f6-4146-b58e-8351b420b39c" }
-variable oidcIssuerURL { default = "https://sts.windows.net/371cb917-b098-4303-b878-c182ec8403ac/" }
+variable oidcClientID { default = "webapi-application-client-identity" }
+variable oidcIssuerURL { default = "https://sts.windows.net/directory-tenant-identity" }
 variable oidcUsernameClaim { default = "upn" }
 variable version { default = "1.11.8" }
 variable apiaccess {

@@ -1,0 +1,52 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/log"]
+  verbs: ["get", "watch", "list"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader-binding
+  namespace: kube-system
+subjects:
+- kind: User        # Add following 3 lines for each new user 
+  name: "aad:sagudise@teksystems.com"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole #this must be Role or ClusterRole
+  name: pod-reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: ns-full-access
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  - cronjobs
+  verbs: ["*"]
+---
+# This role binding allows "sagudise" to full access to his "sagudise" namespace.
+# Create additional role binding for each use along with name space
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ns-full-access-bind
+  namespace: sagudise # This only grants permissions within the "sagudise" namespace.
+subjects:
+- kind: User
+  name: "aad:sagudise@teksystems.com" # Name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: ns-full-access
+  apiGroup: rbac.authorization.k8s.io

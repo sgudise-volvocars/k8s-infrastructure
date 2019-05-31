@@ -18,13 +18,13 @@ metadata:
   name: cluster-admin-binding
 subjects:
 - kind: User
-  name: aad:kunpatil@teksystems.com
+  name: aad:samson@sarithm.com
   apiGroup: rbac.authorization.k8s.io
 - kind: User
-  name: aad:sagudise@teksystems.com
+  name: aad:samsonbabu@sarithm.com
   apiGroup: rbac.authorization.k8s.io
 - kind: User
-  name: aad:lthamaran@teksystems.com
+  name: aad:testuser@sarithm.com
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole

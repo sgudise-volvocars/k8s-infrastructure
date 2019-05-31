@@ -1,0 +1,14 @@
+kubeAPIServer:
+    oidcClientID: spn:f8a1cbda-71f6-4146-b58e-8351b420b39c
+    oidcIssuerURL: https://sts.windows.net/371cb917-b098-4303-b878-c182ec8403ac/
+    oidcUsernameClaim: upn
+    oidcUsernamePrefix: 'aad:'
+
+-----
+
+kubectl config set-credentials sagudise --auth-provider=azure \
+  --auth-provider-arg=environment=AzurePublicCloud \
+  --auth-provider-arg=client-id=bd61efe7-1cd8-4d0a-bb19-aa5ad15a47c3 \
+  --auth-provider-arg=tenant-id=371cb917-b098-4303-b878-c182ec8403ac \
+  --auth-provider-arg=apiserver-id=f8a1cbda-71f6-4146-b58e-8351b420b39c
+
