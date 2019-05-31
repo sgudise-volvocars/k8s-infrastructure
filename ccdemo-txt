@@ -1,0 +1,11 @@
+./render-cluster.sh  ccdemo us-west-2 dev 10.16.0.0/16 Public
+cd /Users/sagudise/projects/k8s-infrastructure/
+make all
+kubectl apply -f addons/flux/deploy/
+kubectl apply -f addons/rbac/
+kubectl cluster-info
+./tools/create-azureAD-kubeconfig.sh
+./tools/create-azureAD-kubeconfig.sh sagudise https://api.ccdemo.uswest2.dev.tekgs.io
+cat ../../.kube/config
+kubectl proxy
+
